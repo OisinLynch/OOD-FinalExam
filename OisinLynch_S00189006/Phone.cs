@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OisinLynch_S00189006
 {
-    class Phone
+    public class Phone
     {
         //Properties
         public string Name { get; set; }
@@ -16,9 +16,9 @@ namespace OisinLynch_S00189006
         public string Phone_Image { get; set; }
 
         //Methods 
-        public void IncreasePrice(decimal percentageValue)
+        public void IncreasePrice(decimal percentValue)
         {
-            Price += percentageValue;
+            Price += percentValue / 100;
         }
     }
 }
