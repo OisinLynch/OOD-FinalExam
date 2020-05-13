@@ -20,9 +20,33 @@ namespace OisinLynch_S00189006
     /// </summary>
     public partial class MainWindow : Window
     {
+        PhoneData db = new PhoneData();
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var query = from p in db.Phones
+                        select p.Name;
+
+            var phones = query.ToList();
+
+            lbxPhones.ItemsSource = query.ToList();
+            
+        }
+
+        private void LbxPhones_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var query = from p in db.Phones
+                        orderby p.Price
+                        select p.Price;
+
+            string selected = lbxPhones.SelectedItem as string;
+
+            tblkPrice.Text = selected;
         }
     }
 }
